@@ -40,7 +40,7 @@ public class BenhAnController {
 
         do {
             try {
-                System.out.print("Nhập mã bệnh án: ");
+                System.out.println("Nhập mã bệnh án: ");
                 maBenhAn = scanner.nextLine();
                 if(benhAnService.findByMaBenhAn(maBenhAn)) {
                     throw new DuplicateMedicalRecordException("Bệnh án đã tồn tại!");
@@ -48,7 +48,7 @@ public class BenhAnController {
             } catch (DuplicateMedicalRecordException e) {
                 System.err.println(e.getMessage());
             }
-        } while(!maBenhAn.matches(MA_BENH_AN_REGEX) || benhAnService.findByMaBenhAn(maBenhAn));
+        } while(benhAnService.findByMaBenhAn(maBenhAn));
 
         do {
             System.out.print("Nhập mã bệnh nhân: ");
